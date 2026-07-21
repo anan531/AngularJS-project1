@@ -22,6 +22,10 @@ app.controller("dashboardcontroller",function($scope){
 
         $scope.totalstudents++;
 
+        $scope.showstudents=true;
+
+        $scope.showDashboard=true;
+
     };
 
 
