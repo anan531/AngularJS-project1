@@ -3,13 +3,13 @@ var app=angular.module('campus360',[]);
 
 app.controller("dashboardcontroller",function($scope){
 
-    $scope.collegename="FISAT";
+    $scope.collegename="FIsat";
     $scope.Name="Ananya T";
     $scope.email="ananyat@gmail.com";
     $scope.regno="007/MCA";
     $scope.dep="CA";
     $scope.course="MCA";
-    $scope.totalstudents="0";
+    $scope.totalstudents=1200;
 
     console.log("Dashboard Contoller Loaded Successfully");
     $scope.students=[
@@ -18,6 +18,16 @@ app.controller("dashboardcontroller",function($scope){
 
     ];
 
+        $scope.fees=25000;
+        $scope.today=new Date();
+        $scope.departments=[
+
+            "CSE","MCA","MBA","EEE","ECE"
+
+        ];
+
+        $scope.selectedDepartment="CSE";
+
     $scope.addstudent=function(){
 
         $scope.totalstudents++;
@@ -25,6 +35,8 @@ app.controller("dashboardcontroller",function($scope){
         $scope.showstudents=true;
 
         $scope.showDashboard=true;
+
+
 
     };
 

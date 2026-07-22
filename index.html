@@ -6,10 +6,11 @@
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="js/app.js"></script>
     <title>College Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body ng-controller="dashboardcontroller">
     <input type="text" ng-model="collegename">
-    <h1>{{collegename}}</h1>
+<h1 style="color: #1E3A8A;">{{collegename}}</h1>
     <input type="text" ng-model="Name">
     <p>Name:{{Name}}</p>
     <input type="text" ng-model="email">
@@ -20,16 +21,19 @@
     <p>Department:{{dep}}</p>
     <input type="text" ng-model="course">
     <p>Course:{{course}}</p>
-    <input type="text" ng-model="totalStudents">
-    <p>Total Students:{{totalStudents}}</p>
-    <button ng-click="totalStudents=totalStudents+1">Add Student</button> 
+    <!-- <input type="number" ng-model="totalStudents"> -->
+    <p ng-class="
+    {   'green': totalstudents>=1000, 
+        'red':totalstudents<1000}">
+        Total Students:{{totalstudents}}</p>
+    <button ng-click="totalstudents=totalstudents+1">Add Student</button> 
 
     <h2>Student List</h2>
     <button ng-click="showstudents= !showstudents">
         show/hide students
     </button>
 
-    <div ng-if="showDashboard= !showDashboard">
+    <!-- <div ng-show="showDashboard"> -->
     <ul ng-show="showstudents">
         <li ng-repeat="student in students">
 
@@ -37,6 +41,63 @@
 
         </li>
     </ul>
+
+    <hr>
+    <h2>filter demo</h2>
+    <p>uppercase:{{collegename | uppercase}}</p>
+    <p>lowercase:{{collegename | lowercase}}</p>
+    <p>currency:{{fees | currency}}</p>
+    <p>date:{{today | date:'dd/MM/yyyy'}}</p>
+    <p>number:{{fees | number:2}}</p>
+
+    <hr>
+    <h2>Selected Departments</h2>
+ 
+    <label>Select Department</label>
+
+    <br><br>
+
+    <select ng-model="selectedDepartment"
+    
+            ng-options="department for department in departments"
+    
+    
+    ></select>
+
+    <p>Select Department:{{selectedDepartment}}</p>
+
+
+    <hr>
+    <h2>Department info</h2>
+    <div ng-switch="selectedDepartment">
+
+        <div ng-switch-when="CSE">
+            <h3>CSE Department</h3>
+            <p>This is CSE department</p>
+    </div>
+
+
+            <div ng-switch-when="MCA">
+            <h3>MCA Department</h3>
+            <p>This is MCA department</p>
+        </div>
+
+        <div ng-switch-when="MBA">
+            <h3>MBA Department</h3>
+            <p>This is MBA department</p>
+        </div>
+
+
+        <div ng-switch-when="EEE">
+            <h3>EEE Department</h3>
+            <p>This is EEE department</p>
+        </div>
+
+        <div ng-switch-when="ECE">
+            <h3>ECE Department</h3>
+            <p>This is ECE department</p>
+        </div>
+
     </div>
 </body>
 </html>
