@@ -98,6 +98,35 @@
             <p>This is ECE department</p>
         </div>
 
-    </div>
+
+        <hr>
+        <h2>ng-init demo</h2>
+        <div ng-init="collegecode='fisat123' ; location='angamaly'">
+
+        <p>College code:{{collegecode}}</p>
+        <p>location:{{location}}</p>
+
+        </div>
+</div>
+        <h2>ng-disable demo</h2>
+        <button ng-click="allowAdmission()">Enable Admission</button>
+        <br><br>
+
+        <button ng-disabled="isDisabled">
+            Take Admission
+
+        </button>
+
+        <hr>
+        <h2>ng-readonly demo</h2>
+        <label>College ID</label>
+        
+        <br><br>
+
+        <input type="text" ng-model="" ng-readonly="isReadOnly">
+    
+        <br><br>
+        <button ng-click="isReadOnly=!isReadOnly">toggle readonly</button>
+        <p>readonly status</p>
 </body>
 </html>
