@@ -127,6 +127,148 @@
     
         <br><br>
         <button ng-click="isReadOnly=!isReadOnly">toggle readonly</button>
-        <p>readonly status</p>
+        <p>readonly status: {{isReadOnly}}</p>
+
+
+        <hr>
+        <br><br>
+
+        <h2>Student Registration</h2>
+
+        <form name="studentForm" novalidate>
+
+            <label>Student Name</label>
+            <br>
+            <input type="text" name="studentName" ng-model="student.name" ng-minlength="3" ng-maxlength="20" required>
+            
+
+        <p ng-show = "studentForm.studentName.$touched && studentForm.studentName.$error.required"
+
+            style="color:red;">Student name is required</p>
+
+        <p ng-show = "studentForm.studentName.$touched && studentForm.studentName.$error.minlength"
+
+            style="color:red;">minimum 3 characters required</p>
+
+        <p ng-show = "studentForm.studentName.$touched && studentForm.studentName.$error.maxlength"
+
+            style="color:red;">maximum 20 characters allowed</p>
+
+        
+        
+
+            <br><br>
+
+
+            <label>Email</label>
+            <br>
+            <input type="email" name="studentEmail" ng-model="student.email" required>
+            
+        <p ng-show = "studentForm.studentEmail.$touched && studentForm.studentEmail.$error.required"
+
+            style="color:red;">Student email is required</p>
+            <br><br>
+            
+
+
+            <label>Phone no</label>
+            <br>
+            <input type="tel" name="studentphone" ng-model="student.phone" required>
+            <p ng-show = "studentForm.studentphone.$touched && studentForm.studentphone.$error.required"
+
+            style="color:red;">Student phone no is required</p>
+            <br><br>
+
+            <label>Gender</label>
+            <br>
+            <input type="text" name="studentGender" ng-model="student.gender" required>
+            <p ng-show = "studentForm.studentGender.$touched && studentForm.studentGender.$error.required"
+
+            style="color:red;">Student gender is required</p>
+            <br><br>
+
+            <label>Address</label>
+            <br>
+            <input type="text" name="studAddr" ng-model="student.address" required>
+            <p ng-show = "studentForm.studAddr.$touched && studentForm.studAddr.$error.required"
+
+            style="color:red;">Student address is required</p>
+            <br><br>
+
+            <label>Age</label>
+            <br>
+            <input type="number" name="studAge" ng-model="student.age" required>
+            <p ng-show = "studentForm.studAge.$touched && studentForm.studAge.$error.required"
+
+            style="color:red;">Student age is required</p>
+            <br><br>
+
+            <button>Register Student</button>
+
+        </form>
+
+        <hr>
+        <br><br>
+        <h2>Form Status</h2>
+
+        <p>
+
+            valid:{{studentForm.$valid}}
+
+        </p>
+
+
+        <p>
+
+            invalid:{{studentForm.$invalid}}
+
+        </p>
+
+
+        <p>
+
+            pristine:{{studentForm.$pristine}}
+
+        </p>
+
+        <p>
+
+            dirty:{{studentForm.$dirty}}
+
+        </p>
+        <p>
+student name touched : {{studentForm.studentName.$touched}}
+
+</p>
+
+
+<p>
+
+    student name valid : {{studentForm.studentName.$valid}}
+</p>
+
+
+<p>
+student name invalid : {{studentForm.studentName.$invalid}}
+
+</p>
+
+<p>student name error required : {{studentForm.studentName.$error.required}}
+
+
+</p>
+
+<p>
+student minlength invalid : {{studentForm.studentName.$error.minlength}}
+
+</p>
+
+<p>
+student maxlength invalid : {{studentForm.studentName.$error.maxlength}}
+
+</p>
+
+
+
 </body>
 </html>
