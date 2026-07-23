@@ -160,50 +160,131 @@
             <br><br>
 
 
-            <label>Email</label>
-            <br>
-            <input type="email" name="studentEmail" ng-model="student.email" required>
-            
+            <label>Email:</label>
+        <br>
+        <input type="email" name="studentEmail" ng-model="student.email" ng-pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/" required>
         <p ng-show = "studentForm.studentEmail.$touched && studentForm.studentEmail.$error.required"
+    style = "color: red;">
 
-            style="color:red;">Student email is required</p>
-            <br><br>
+        Email is required
+
+    </p>
+
+    <p ng-show = "studentForm.studentEmail.$touched && studentForm.studentEmail.$error.pattern"
+    style = "color: red;">
+
+        Enter valid Email
+
+    </p>
+    <br><br>
             
 
 
-            <label>Phone no</label>
-            <br>
-            <input type="tel" name="studentphone" ng-model="student.phone" required>
-            <p ng-show = "studentForm.studentphone.$touched && studentForm.studentphone.$error.required"
+           <label>Phone No</label>
+<br>
+<input type="tel"
+       name="studentPhone"
+       ng-model="student.phone"
+       ng-pattern="/^[0-9]{10}$/"
+       required>
 
-            style="color:red;">Student phone no is required</p>
+<p ng-show="studentForm.studentPhone.$touched &&
+            studentForm.studentPhone.$error.required"
+   style="color:red;">
+    Phone number is required
+</p>
+
+<p ng-show="studentForm.studentPhone.$touched &&
+            studentForm.studentPhone.$error.pattern"
+   style="color:red;">
+    Enter a valid 10-digit phone number
+</p>
+
             <br><br>
 
-            <label>Gender</label>
-            <br>
-            <input type="text" name="studentGender" ng-model="student.gender" required>
-            <p ng-show = "studentForm.studentGender.$touched && studentForm.studentGender.$error.required"
 
-            style="color:red;">Student gender is required</p>
+            
+
+<label>Gender</label><br>
+
+<input type="radio"
+       name="studentGender"
+       ng-model="student.gender"
+       value="Male"
+       required> Male
+
+<input type="radio"
+       name="studentGender"
+       ng-model="student.gender"
+       value="Female"
+       required> Female
+
+<p ng-show="studentForm.studentGender.$touched &&
+            studentForm.studentGender.$error.required"
+   style="color:red;">
+    Please select a gender
+</p>
+
             <br><br>
-
             <label>Address</label>
-            <br>
-            <input type="text" name="studAddr" ng-model="student.address" required>
-            <p ng-show = "studentForm.studAddr.$touched && studentForm.studAddr.$error.required"
+<br>
 
-            style="color:red;">Student address is required</p>
+<input type="text"
+       name="studAddr"
+       ng-model="student.address"
+       ng-minlength="5"
+       ng-maxlength="100"
+       required>
+
+<p ng-show="studentForm.studAddr.$touched &&
+            studentForm.studAddr.$error.required"
+   style="color:red;">
+    Address is required
+</p>
+
+<p ng-show="studentForm.studAddr.$touched &&
+            studentForm.studAddr.$error.minlength"
+   style="color:red;">
+    Address must contain at least 5 characters
+</p>
+
+<p ng-show="studentForm.studAddr.$touched &&
+            studentForm.studAddr.$error.maxlength"
+   style="color:red;">
+    Address cannot exceed 100 characters
+</p>
+
+<br><br>
+<label>Age</label>
+<br>
+
+<input type="number"
+       name="studAge"
+       ng-model="student.age"
+       min="18"
+       max="100"
+       required>
+
+<p ng-show="studentForm.studAge.$touched &&
+            studentForm.studAge.$error.required"
+   style="color:red;">
+    Age is required
+</p>
+
+<p ng-show="studentForm.studAge.$touched &&
+            studentForm.studAge.$error.min"
+   style="color:red;">
+    Age must be 18 years or above
+</p>
+
+<p ng-show="studentForm.studAge.$touched &&
+            studentForm.studAge.$error.max"
+   style="color:red;">
+    Invalid age
+</p>
             <br><br>
 
-            <label>Age</label>
-            <br>
-            <input type="number" name="studAge" ng-model="student.age" required>
-            <p ng-show = "studentForm.studAge.$touched && studentForm.studAge.$error.required"
-
-            style="color:red;">Student age is required</p>
-            <br><br>
-
-            <button>Register Student</button>
+            <button type="button" ng-click="registerstudent()">Register Student</button>
 
         </form>
 
@@ -266,6 +347,114 @@ student minlength invalid : {{studentForm.studentName.$error.minlength}}
 <p>
 student maxlength invalid : {{studentForm.studentName.$error.maxlength}}
 
+</p>
+<p>
+Student email touched : {{studentForm.studentEmail.$touched}}
+</p>
+
+<p>
+Student email valid : {{studentForm.studentEmail.$valid}}
+</p>
+
+<p>
+Student email invalid : {{studentForm.studentEmail.$invalid}}
+</p>
+
+<p>
+Student email error required : {{studentForm.studentEmail.$error.required}}
+</p>
+
+<p>
+Student email error pattern : {{studentForm.studentEmail.$error.pattern}}
+</p>
+
+<p>
+Student email error email : {{studentForm.studentEmail.$error.email}}
+</p>
+<p>
+Student phone touched : {{studentForm.studentPhone.$touched}}
+</p>
+
+<p>
+Student phone valid : {{studentForm.studentPhone.$valid}}
+</p>
+
+<p>
+Student phone invalid : {{studentForm.studentPhone.$invalid}}
+</p>
+
+<p>
+Student phone error required : {{studentForm.studentPhone.$error.required}}
+</p>
+
+<p>
+Student phone error pattern : {{studentForm.studentPhone.$error.pattern}}
+</p>
+<p>
+Student gender touched : {{studentForm.studentGender.$touched}}
+</p>
+
+<p>
+Student gender valid : {{studentForm.studentGender.$valid}}
+</p>
+
+<p>
+Student gender invalid : {{studentForm.studentGender.$invalid}}
+</p>
+
+<p>
+Student gender error required : {{studentForm.studentGender.$error.required}}
+</p>
+
+<p>
+Selected gender : {{student.gender}}
+</p>
+
+<p>
+Student age touched : {{studentForm.studAge.$touched}}
+</p>
+
+<p>
+Student age valid : {{studentForm.studAge.$valid}}
+</p>
+
+<p>
+Student age invalid : {{studentForm.studAge.$invalid}}
+</p>
+
+<p>
+Student age error required : {{studentForm.studAge.$error.required}}
+</p>
+
+<p>
+Student age error min : {{studentForm.studAge.$error.min}}
+</p>
+
+<p>
+Student age error max : {{studentForm.studAge.$error.max}}
+</p>
+<p>
+Student address touched : {{studentForm.studAddr.$touched}}
+</p>
+
+<p>
+Student address valid : {{studentForm.studAddr.$valid}}
+</p>
+
+<p>
+Student address invalid : {{studentForm.studAddr.$invalid}}
+</p>
+
+<p>
+Student address error required : {{studentForm.studAddr.$error.required}}
+</p>
+
+<p>
+Student address error minlength : {{studentForm.studAddr.$error.minlength}}
+</p>
+
+<p>
+Student address error maxlength : {{studentForm.studAddr.$error.maxlength}}
 </p>
 
 

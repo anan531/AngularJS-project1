@@ -43,6 +43,12 @@ app.controller("dashboardcontroller",function($scope){
         }
 
 $scope.student={};
+$scope.registerstudent = function (){
+
+    alert("Student registration is successfull!")
+
+};
+
 
     $scope.addstudent=function(){
 
